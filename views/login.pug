@@ -4,17 +4,17 @@ block title
   title Polls | Login
   
 block content
-  h1 Login
+  h1#RegisterLogin-title Login
   hr
   form(method='POST', action='/users/login')
     #form-group
       label Username:
-      input.form-control(name='username', type='text')
+      input#Login-Register-Input.form-control(name='username', type='text')
     #form-group
       label Password:
-      input.form-control(name='password', type='password')
+      input#Login-Register-Input.form-control(name='password', type='password')
     br
-    input.btn.btn-primary(type='submit', value='Submit')
+    input#Login-Register-Submit-Btn.btn.btn-primary(type='submit', value='Submit')
     br
     br
-    a(href='/users/register') Create an account here
+    a(href='/users/register') Need an account? Sign up here!

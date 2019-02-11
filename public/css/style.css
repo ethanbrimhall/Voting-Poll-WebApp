@@ -1,0 +1,30 @@
+/*
+Alert colors ****************************************************
+*/
+.alert-error{
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.alert-success_msg{
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+/*
+Register Page ****************************************************
+*/
+#RegisterLogin-title{
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+#Login-Register-Input{
+  width:350px;
+}
+
+#Login-Register-Submit-Btn{
+  width:350px;
+  height:40px;
+}
