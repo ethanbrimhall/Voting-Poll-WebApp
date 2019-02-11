@@ -74,6 +74,11 @@ require('./config/passport')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.get('*', (req, res, next) =>{
+  res.locals.user = req.user || null;
+  next();
+});
+
 // Feed route
 app.get('/', ensureAuthenticated, (req, res) =>{
   res.render('index');
@@ -90,6 +95,9 @@ function ensureAuthenticated(req, res, next){
 
 let users = require('./routes/users');
 app.use('/users', users);
+
+let polls = require('./routes/polls');
+app.use('/polls', polls);
 
 app.listen(3000, () => {
   console.log('\n- Server Started on port 3000');

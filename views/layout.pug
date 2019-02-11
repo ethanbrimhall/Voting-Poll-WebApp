@@ -17,17 +17,12 @@ html
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
             if user
-              form.navbar-form.navbar-left(method='POST', action='/users/search')
-                .form-group
-                  input#searchbar.form-control(type='text', placeholder='Search...', name='name')
-                button.btn.btn-default(type='submit', value="Search")
-                  i.fa.fa-search(aria-hidden='true')
+              li
+                a(href='/polls/add') Add New Poll
           ul.nav.navbar-nav.navbar-right
             if user
               li
-                a(href='/users/'+user.username) 
-                  b
-                    My Polls
+                a(href='/users/'+user.username) My Polls
               li
                 a(href='/users/logout') Logout
             else
@@ -40,7 +35,6 @@ html
       if errors
         each error, i in errors
           div(class='alert alert-danger') #{error.msg}            
-    .container
       block content
       br
       hr

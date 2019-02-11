@@ -12,7 +12,6 @@ Alert colors ****************************************************
   background-color: #dff0d8;
   border-color: #d6e9c6;
 }
-
 /*
 Register Page ****************************************************
 */
@@ -27,4 +26,30 @@ Register Page ****************************************************
 #Login-Register-Submit-Btn{
   width:350px;
   height:40px;
+}
+/*
+Add_Poll Page ****************************************************
+*/
+#Add-Poll-Title{
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+#Poll-Input{
+  width:500px;
+  height:100px;
+}
+
+#Add-Poll-Choice{
+  width: 500px;
+}
+
+#Add-Poll-Btn{
+  width: 500px;
+  height: 40px;
+}
+
+#Add-Poll-Instruction{
+  font-weight: 200;
+  font-size: 20px;
+  color:gray;
 }

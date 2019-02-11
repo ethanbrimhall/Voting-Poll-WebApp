@@ -1,0 +1,23 @@
+extends layout
+
+block title
+  title Polls | Add Poll
+  
+block content
+  h1#Add-Poll-Title Add Poll
+  h5#Add-Poll-Instruction To create a poll, fill in the 'Poll Question' field and BOTH choices.
+  hr
+  form(method='POST', action='/polls/add')
+    #form-group
+      input#Poll-Input.form-control(name='question', type='text', placeholder="Poll Question")
+    br
+    br
+    #form-group
+      input#Add-Poll-Choice.form-control(name='choice1', type='text', placeholder="Choice 1")
+    br
+    #form-group
+      input#Add-Poll-Choice.form-control(name='choice2', type='text', placeholder="Choice 2")
+    br
+    br
+    input#Add-Poll-Btn.btn.btn-primary(type='submit', value='Create Poll')
+    br
