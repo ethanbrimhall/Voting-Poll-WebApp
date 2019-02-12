@@ -48,7 +48,7 @@ router.get('/:id', ensureAuthenticated, (req, res) =>{
     if(poll){
       res.render('poll', {
         poll:poll
-      })
+      });
     }else{
       res.redirect('/');
     }

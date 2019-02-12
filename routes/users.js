@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
 let User = require('../models/user');
+let Poll = require("../models/poll");
 
 router.get('/login', ensureUnAuthenticated, (req, res) =>{
   res.render('login');
@@ -98,6 +99,21 @@ router.post('/register', (req, res) =>{
         });
       }
     });
+  }
+});
+
+router.get('/:id', ensureAuthenticated, (req, res) => {
+  if(req.user.username == req.params.id){
+    Poll.find({creator:req.params.id}, (err, polls) =>{
+  		if(err){
+  			console.log(err);
+  		}
+  		res.render('my_polls', {
+  			polls: polls
+  		});
+  	}).sort({$natural:-1});
+  }else{
+    res.redirect('/');
   }
 });
 
