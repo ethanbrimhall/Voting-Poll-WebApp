@@ -25,6 +25,10 @@ let pollSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  voters:{
+    type: Array,
+    required: true
+  }
 });
 
 let Poll = module.exports = mongoose.model('Poll', pollSchema);

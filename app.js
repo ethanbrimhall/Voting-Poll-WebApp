@@ -9,6 +9,7 @@ const expressValidator = require('express-validator');
 const config = require('./config/database')
 
 let User = require('./models/user');
+let Poll = require("./models/poll");
 
 mongoose.connect(config.database);
 let db = mongoose.connection;
@@ -81,7 +82,14 @@ app.get('*', (req, res, next) =>{
 
 // Feed route
 app.get('/', ensureAuthenticated, (req, res) =>{
-  res.render('index');
+  Poll.find({}, (err, polls) =>{
+		if(err){
+			console.log(err);
+		}
+		res.render('index', {
+			polls: polls
+		});
+	}).sort({$natural:-1}).limit(15);
 });
 
 // Access Control

@@ -4,4 +4,9 @@ block title
   title Polls
   
 block content
-  h1 Polls
+  h1 Trending Polls
+  hr
+  for poll in polls
+    a(id = "Index-Poll-Title" href="/polls/"+poll._id)!= poll.question
+    br
+    hr

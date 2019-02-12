@@ -29,6 +29,7 @@ router.post('/add', ensureAuthenticated, (req, res) =>{
     poll.option2Text = req.body.choice2;
     poll.option1Votes = "0";
     poll.option2Votes = "0";
+    poll.voters = [];
 
 		poll.save((err) =>{
 			if(err){
@@ -42,6 +43,17 @@ router.post('/add', ensureAuthenticated, (req, res) =>{
 	}
 });
 
+router.get('/:id', ensureAuthenticated, (req, res) =>{
+	Poll.findById(req.params.id, (err, poll) =>{
+    if(poll){
+      res.render('poll', {
+        poll:poll
+      })
+    }else{
+      res.redirect('/');
+    }
+	});
+});
 
 // Checks if user is logged in and redirects to login if NOT
 function ensureAuthenticated(req, res, next){

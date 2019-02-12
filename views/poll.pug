@@ -1,0 +1,8 @@
+extends layout
+
+block title
+  title Poll | Poll
+  
+block content
+  h4!= "Created by: " + poll.creator
+  h1!= poll.question
