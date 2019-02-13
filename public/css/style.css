@@ -98,3 +98,8 @@ Poll Vote Page ****************************************************
   float: right;
   font-size: 15px;
 }
+
+#Option-Vote-Title{
+  font-size: 20px;
+  font-weight: 300;
+}

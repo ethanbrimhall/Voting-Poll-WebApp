@@ -7,8 +7,6 @@ option2 = parseInt(option2);
 var option1Value = (option1 / (option1 + option2)) * 500;
 var option2Value = (option2 / (option1 + option2)) * 500;
 
-console.log(option1Value);
-console.log(option2Value);
 
 if(option1Value == 0){
   option1Value = 10;
