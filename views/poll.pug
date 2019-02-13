@@ -15,5 +15,15 @@ block content
       input#Option_Button.btn.btn-primary(name="button" type='submit', value!=poll.option2Text)
       
   else
-    h1!= poll.option1Votes
-    h1!= poll.option2Votes
+    #option1Graph.graph
+      #number-of-votes1.numberofvotes!= poll.option1Votes
+    br
+    #option2Graph.graph
+      #number-of-votes2.numberofvotes!= poll.option2Votes
+    
+    
+      
+block scripts
+  script(type='text/javascript', src='https://www.gstatic.com/charts/loader.js')
+  script(type='text/javascript' src='/js/pollGraph.js')
+  
