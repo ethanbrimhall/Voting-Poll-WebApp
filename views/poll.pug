@@ -4,5 +4,16 @@ block title
   title Poll | Poll
   
 block content
-  h4!= "Created by: " + poll.creator
-  h1!= poll.question
+  h4#Poll-Creator!= "Created by: " + poll.creator
+  h1#Poll-Vote-Question!= poll.question
+  br
+  if votedAlready == false
+    form(method='POST', action='/polls/'+poll._id)
+      input#Option_Button.btn.btn-primary(name="button" type='submit', value!=poll.option1Text)
+    br
+    form(method='POST', action='/polls/'+poll._id)
+      input#Option_Button.btn.btn-primary(name="button" type='submit', value!=poll.option2Text)
+      
+  else
+    h1!= poll.option1Votes
+    h1!= poll.option2Votes

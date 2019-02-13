@@ -44,15 +44,72 @@ router.post('/add', ensureAuthenticated, (req, res) =>{
 });
 
 router.get('/:id', ensureAuthenticated, (req, res) =>{
+
+  var votedAlready = false;
+
 	Poll.findById(req.params.id, (err, poll) =>{
     if(poll){
-      res.render('poll', {
-        poll:poll
-      });
+
+      for(var i = 0; i < poll.voters.length; i++){
+        if(poll.voters[i] == req.user.username){
+          votedAlready = true;
+          return res.render('poll', {
+            poll:poll,
+            votedAlready: votedAlready
+          });
+        }
+      }
+
+    return res.render('poll', {
+      poll:poll,
+      votedAlready: votedAlready
+    });
+
+
     }else{
       res.redirect('/');
     }
 	});
+});
+
+router.post('/:id', ensureAuthenticated, (req, res) =>{
+  var option = req.body.button;
+  var pollId = req.params.id;
+  var thePoll;
+
+  Poll.findOne({_id:pollId}, (err, poll) =>{
+		if(err){
+			console.log(err);
+		}
+
+    thePoll = poll;
+
+    console.log(thePoll);
+
+    if(option == thePoll.option1Text){
+      thePoll.option1Votes = (parseInt(thePoll.option1Votes) + 1).toString();
+    }else{
+      thePoll.option2Votes = (parseInt(thePoll.option2Votes) + 1).toString();
+    }
+
+    thePoll.voters.push(req.user.username);
+
+    console.log(thePoll);
+
+    Poll.update({_id:pollId}, thePoll,(err) =>{
+  		if(err){
+  			console.log(err);
+  			return;
+  		}else{
+  			res.redirect('/polls/'+pollId);
+  		}
+  	});
+
+	});
+
+
+
+
 });
 
 // Checks if user is logged in and redirects to login if NOT
